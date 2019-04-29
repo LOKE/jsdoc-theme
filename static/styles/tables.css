@@ -1,0 +1,36 @@
+table {
+    border:1px solid #999;
+}
+th, td {
+    text-align: left;
+    padding: 5px;
+    background: #ccc;
+    border-right: 1px solid #999;
+    
+    min-width: 50px;
+    font-weight: 500;
+    font-family: 'Montserrat', sans-serif;
+}
+tr, th {
+	border-bottom: 1px solid #999;
+}
+th:last-of-type,
+td:last-of-type {
+    border-right: 0;
+}
+
+td {
+    font-weight: normal;
+    color:#000;
+    background: transparent;
+}
+tr:nth-child(even) {
+    background: #eee;
+}
+
+tr:nth-child(odd) {
+    background: #FFF
+}
+tr:last-of-type {
+    border-bottom:0;
+}

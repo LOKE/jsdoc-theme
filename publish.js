@@ -293,9 +293,11 @@ function buildApiMemberNav(items, itemHeading, itemsSeen, linktoFn) {
   if (items.length) {
     var routes = {};
     items.forEach(function(item) {
-      var parts = item.route.split(' ');
-      var method = parts.length === 1 ? 'GET' : parts[0];
-      var route = parts.length === 1 ? parts[0] : parts[1];
+          var parts = Object.values(item.route);
+          var method = item.route.type;
+          var route = item.route.name;
+
+          routes[route] = {'method':method};
       if (!routes[route]) routes[route] = {};
       routes[route][method] = item;
     });
@@ -309,9 +311,12 @@ function buildApiMemberNav(items, itemHeading, itemsSeen, linktoFn) {
       itemsNav += '<li><a href="#">' + route + '</a>';
       itemsNav += "<ul class='methods'>";
       for (var method in routes[route]) {
+              //console.log(routes[route][method].name)
+              if (routes[route][method].name != undefined || routes[route][method].name != null) {
         itemsNav += "<li data-type='method'>";
-        itemsNav += linkto(routes[route][method].longname, method);
+                itemsNav += linkto(routes[route][method].longname, routes[route][method].name);
         itemsNav += "</li>";
+      }
       }
       itemsNav += "</ul>";
       itemsNav += '</li>';
@@ -413,7 +418,7 @@ function buildNav(members) {
     // get all functions with a route defined
     members.api = find({kind:'function'})
     .filter(function(fnDoclet) {
-      console.log(fnDoclet.route);
+      //console.log(fnDoclet.route);
       return fnDoclet.route;
     });
 

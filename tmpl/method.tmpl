@@ -36,8 +36,8 @@ if (data.rpc) {
 
 <?js if (data.route) {
     ?>
-      <a href="#api-<?js= data.name ?>">
-        <span class="label label-api">API: <?js= data.route ?></span>
+      <a href="#api-<?js= data.route.name ?>">
+        <span class="label label-api">API: <?js= data.route.type ?> <?js= data.route.name ?></span>
       </a>
     <?js
 } ?>
